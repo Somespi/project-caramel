@@ -9,7 +9,6 @@ Furthermore, Charles Darwin argued that mental abilities evolved gradually rathe
 Following this concept, Caramel starts without any pre-existing knowledge of its surroundings, but a small set of basic reflexes often seen in newborn animals. These reflexes serve as essential to interact with the world, not as learned knowledge. This setup allows the robot to develop more complex behaviors over time through experience.  
 
 
-
 # Why?
 
 Caramel explores this research question:
