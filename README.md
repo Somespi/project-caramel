@@ -1,1 +1,15 @@
 ![logo](./resources/Caramel_logo.png)
+
+# What is Caramel?
+
+Caramel is a project that looks into how tabula rasa can be applied in robotics. The philosopher John Locke popularized this idea, suggesting that people are born without any knowledge and gain understanding through their experiences.
+
+Following this concept, Caramel starts without any pre-existing knowledge of its surroundings. However, the experiment includes a small set of basic reflexes often seen in newborn animals. These reflexes serve as essential to interact with the world, not as learned knowledge. This setup allows the robot to develop more complex behaviors over time through experience.
+
+# Why?
+
+Caramel explores this research question:
+
+> **To what extent can a behaviorist robot learn to imitate observed behaviors and generate new actions through experience alone?**
+
+By investigating this question, the project aims to understand how far robots can go with experience-based learning and which behaviors need an inherent structure versus those that can develop through interacting with their environment.
