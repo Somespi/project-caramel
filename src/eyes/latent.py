@@ -40,28 +40,29 @@ class Model:
         self.optimizer = optim.Adam(self.model.parameters(), lr=1e-3, weight_decay=1e-8)
     
         
-    def __train(self, epochs, loader):
+    def __train(self,loader, epochs):
         optimizer = optim.Adam(self.model.parameters(), lr=1e-3, weight_decay=1e-8)
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model.to(device)
         
         for epoch in range(epochs):
             last_loss = 0.0
-            for images, _ in loader:
-                images = images.view(-1, self.input_dim).to(device)
-                predicted = self.model(images)
-                loss = self.loss_function(predicted, images)
-                optimizer.zero_grad()
-                loss.backward()
-                optimizer.step()
-                last_loss = loss.item()
+            for images in loader:
+                for k in images:
+                    images = k.view(-1, self.input_dim).to(device)
+                    predicted = self.model(images)
+                    loss = self.loss_function(predicted, images)
+                    optimizer.zero_grad()
+                    loss.backward()
+                    optimizer.step()
+                    last_loss = loss.item()
             print(f"Epoch {epoch+1}/{epochs}, Loss: {last_loss:.6f}")
             
     def generate_latent(self, frame):
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model.to(device)
         self.model.eval() 
-        frame_norm = frame.astype("float32") / 255.0
+        frame_norm = torch.from_numpy(frame).to(torch.float32) / 255.0
         frame_tensor = torch.tensor(frame_norm, dtype=torch.float32).view(-1, self.input_dim).to(device)
         
         with torch.no_grad():
@@ -82,7 +83,8 @@ class Model:
             frame_path = os.path.join(path, frame_file)
             frame = cv2.imread(frame_path)
             if frame is not None:
-                frame_norm = frame.astype("float32") / 255.0
+                frame_norm = torch.from_numpy(frame).to(torch.float32) / 255.0
+
                 dataset.append(frame_norm.flatten())
         return dataset
     
@@ -93,7 +95,7 @@ class Model:
         if not dataset:
             print("No valid frames found in the specified path.")
             return
-        dataset_tensor = torch.tensor(dataset, dtype=torch.float32)
+        dataset_tensor = torch.stack(dataset).float()
         from torch.utils.data import TensorDataset
         torch_dataset = TensorDataset(dataset_tensor)
         data_loader = torch.utils.data.DataLoader(torch_dataset, batch_size=32, shuffle=True)
