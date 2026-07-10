@@ -1,4 +1,4 @@
-![logo](./resources/Caramel_logo.png)
+![logo](./resources/Caramel_logo_logo_v2.jpg)
 
 # What is Caramel?
 
