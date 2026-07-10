@@ -14,6 +14,6 @@ Following this concept, Caramel starts without any pre-existing knowledge of its
 
 Caramel explores this research question:
 
-> **To what extent can a behaviorist robot learn to imitate observed behaviors and generate new actions guided by minimal innate reflexes and intrinsic motivational systems?**
+> **To what extent can a behaviorist robot respond to changes in its environment, develop complex behaviors, and create new actions based only on basic reflexes and internal motivation systems?**
 
-By investigating this question, the project aims to understand how far robots can go with experience-based learning and which behaviors need an inherent structure versus those that can develop through interacting with their environment through curiosity, and "hormones."
+By investigating this question, the project aims to understand how far robots can go with experience-based learning and which behaviors need an inherent structure versus those that can develop through interacting with their environment through bio-inspired memories, curiosity, and "hormones."
