@@ -4,7 +4,7 @@ import time
 import cv2
 import torch
 import threading 
-import latent, camera  
+from . import camera, latent
 
 CAPTURE_INTERVAL_SECS = 2.0    
 INPUT_DIM = 64 * 64 * 3  
