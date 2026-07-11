@@ -17,7 +17,7 @@ class Eyes:
         self.cam = camera.Camera()
         self.model = latent.Model(INPUT_DIM)
         self.is_sleeping = False
-        
+        self.frame = None
         import numpy as np
         self.current_latent = np.zeros(18, dtype=np.float32)
         
@@ -39,6 +39,7 @@ class Eyes:
                 if frame is not None:
                     frame_count += 1
                     frame_resized = cv2.resize(frame, (64, 64))
+                    self.frame = frame_resized
                     self.current_latent = self.model.generate_latent(frame_resized)
                     frame_filename = os.path.join(TEMP_DIR, f"frame_{frame_count:04d}.png")
                     cv2.imwrite(frame_filename, frame_resized)
@@ -53,7 +54,7 @@ class Eyes:
         self.thread.start()
         
     def get_frame(self):
-        return self.current_latent
+        return self.current_latent, self.frame
         
     def stop(self):
         self.is_sleeping = True

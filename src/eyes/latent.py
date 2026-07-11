@@ -13,10 +13,10 @@ class AE(nn.Module):
             nn.ReLU(),
             nn.Linear(64, 36),
             nn.ReLU(),
-            nn.Linear(36, 18), 
+            nn.Linear(36, 30), 
         )
         self.decoder = nn.Sequential(
-            nn.Linear(18, 36),
+            nn.Linear(30, 36),
             nn.ReLU(),
             nn.Linear(36, 64),
             nn.ReLU(),
