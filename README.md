@@ -1,4 +1,9 @@
-![logo](./resources/Caramel_logo_logo_v2.jpg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./resources/logo_dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="./resources/logo.png">
+  <img alt="Logo" src="./resources/logo_light.png">
+</picture>
+<br><br><br>
 
 # What is Caramel?
 
